@@ -56,11 +56,27 @@ def runcode():
             sigma=sigma*1.25
         else:
             sigma=sigma*0.82
+        seedvalues=[]
+        seedvalues2=[]
+        for h in lamseed:
+            seedvalues.append(h.getValue())
+            seedvalues2.append(h.getValue())
+        seedvalues.sort()
+        seedvalues2=np.array(seedvalues2)
+        lamseed=np.array(lamseed)
+        museed=[]
+
+        for k in range(mu):
+            museed.append(lamseed[seedvalues[k]==seedvalues2][0])
+
+        print museed[0].getValue(),'\t',museed[0].getX(),'\t',museed[0].getY()
+        print u
 
 
-        seedcopy=lamseed[:]
-        print 'abc'
-    print 'finish'
+
+
+
+
 
 ##        for h in range(len(lamseed)):
 ##            #tmpchild=Seed()
@@ -79,6 +95,7 @@ def runcode():
 def main():
     pass
     runcode()
+    print 'finished'
 
 if __name__ == '__main__':
     main()
